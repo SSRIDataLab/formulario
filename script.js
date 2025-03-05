@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const experienceContainer = document.getElementById('experienceContainer');
 
     // Configuración de Google Sheets
-    const GOOGLE_SHEET_URL = 'TU_URL_DE_GOOGLE_SCRIPT_WEB_APP';
+    const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxMMSSSeCicJI-STKvTm9HP2mLzP0Ow7YKAJ8c4wj5w_5PmQNCWdomw8D8iMqOuadu3/exec';
 
     // Función para crear botón de eliminar
     const createRemoveButton = () => {
@@ -59,12 +59,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const sendToGoogleSheets = async (formData) => {
         try {
             const response = await fetch(GOOGLE_SHEET_URL, {
-                method: 'POST',
-                mode: 'no-cors', // Importante para evitar problemas de CORS
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams(formData)
+              method: 'POST',
+              mode: 'no-cors', // Importante para evitar problemas de CORS
+              body: formData
             });
             return true;
         } catch (error) {
